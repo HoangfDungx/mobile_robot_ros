@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/hoangdung/ROS_project/mobile_robot_ws/devel/setup.sh

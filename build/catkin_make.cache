@@ -1,0 +1,2 @@
+mobile_robot
+-DCATKIN_DEVEL_PREFIX=/home/hoangdung/ROS_project/mobile_robot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/hoangdung/ROS_project/mobile_robot_ws/install -G Unix Makefiles

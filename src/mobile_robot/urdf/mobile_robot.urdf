@@ -4,6 +4,37 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="mobile_robot">
+  <!-- add ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/mobile_robot_control</robotNamespace>
+    </plugin>
+  </gazebo>
+  <!-- robot_description -->
+  <!-- foot_print_link -->
+  <!-- <link name="base_footprint">
+    <inertial>
+      <mass value="0.0001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.04"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+  <gazebo reference="base_footprint">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo> -->
+  <link name="dummy"></link>
+  <!-- base_link -->
   <link
     name="base_link">
     <inertial>
@@ -44,6 +75,16 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.02"/>
+    <parent link="dummy"/>
+    <child link="base_link"/>
+   </joint>
+  <!-- left_wheel_link -->
   <link
     name="left_wheel">
     <inertial>
@@ -84,6 +125,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="left_wheel">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/DarkGrey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="left_wheel_joint"
     type="continuous">
@@ -103,6 +153,7 @@
       damping="5"
       friction="0.1" />
   </joint>
+  <!-- right_wheel_link -->
   <link
     name="right_wheel">
     <inertial>
@@ -143,6 +194,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="right_wheel">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/DarkGrey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="right_wheel_joint"
     type="continuous">
@@ -162,6 +222,7 @@
       damping="0.5"
       friction="0.1" />
   </joint>
+  <!-- caster_front -->
   <link
     name="caster_front">
     <inertial>
@@ -202,6 +263,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="caster_front">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="caster_front_joint"
     type="continuous">
@@ -218,6 +288,7 @@
       damping="0.2"
       friction="0.1" />
   </joint>
+  <!-- wheel_front -->
   <link
     name="caster_front_wheel">
     <inertial>
@@ -258,6 +329,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="caster_front_wheel">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="caster_front_wheel_joint"
     type="continuous">
@@ -274,6 +354,7 @@
       damping="0.2"
       friction="0.1" />
   </joint>
+  <!-- caster_back -->
   <link
     name="caster_back">
     <inertial>
@@ -314,6 +395,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="caster_back">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="caster_back_joint"
     type="continuous">
@@ -330,6 +420,7 @@
       damping="0.2"
       friction="0.1" />
   </joint>
+  <!-- wheel_back -->
   <link
     name="caster_back_wheel">
     <inertial>
@@ -370,6 +461,15 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="caster_back_wheel">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="100.0"/>
+    <kd value="10.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
   <joint
     name="caster_back_wheel_joint"
     type="continuous">
@@ -386,4 +486,26 @@
       damping="0.2"
       friction="0.1" />
   </joint>
+  <!-- actuators -->
+  <transmission name="tran_left_wheel">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_wheel_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_left">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_right_wheel">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_wheel_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_right">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>

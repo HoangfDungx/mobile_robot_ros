@@ -1,0 +1,8 @@
+prefix=/home/hoangdung/ROS_project/mobile_robot_ws/devel
+
+Name: mobile_robot_controller
+Description: Description of mobile_robot_controller
+Version: 0.0.0
+Cflags: -I/home/hoangdung/ROS_project/mobile_robot_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

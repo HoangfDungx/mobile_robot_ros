@@ -7,12 +7,13 @@
   <!-- add ros_control plugin -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/mobile_robot_control</robotNamespace>
+      <robotNamespace>/mobile_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
   <!-- robot_description -->
   <!-- foot_print_link -->
-  <!-- <link name="base_footprint">
+  <link name="base_footprint">
     <inertial>
       <mass value="0.0001"/>
       <origin xyz="0 0 0"/>
@@ -32,24 +33,22 @@
   </joint>
   <gazebo reference="base_footprint">
     <turnGravityOff>false</turnGravityOff>
-  </gazebo> -->
-  <link name="dummy"></link>
+  </gazebo>
   <!-- base_link -->
-  <link
-    name="base_link">
+  <link name="base_link">
     <inertial>
       <origin
-        xyz="2.2942E-09 2.7821E-09 0.081848"
+        xyz="1.0791E-06 0.00010995 0.010746"
         rpy="0 0 0" />
       <mass
-        value="1.0999" />
+        value="1.1834" />
       <inertia
-        ixx="0.018561"
-        ixy="-4.5546E-10"
-        ixz="-2.8662E-12"
-        iyy="0.013478"
-        iyz="-3.4644E-12"
-        izz="0.01975" />
+        ixx="0.012305"
+        ixy="-4.8396E-10"
+        ixz="-1.145E-12"
+        iyy="0.0078535"
+        iyz="-4.3126E-06"
+        izz="0.019384" />
     </inertial>
     <visual>
       <origin
@@ -62,7 +61,7 @@
       <material
         name="">
         <color
-          rgba="0.8 0.8 0.8 1" />
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
@@ -79,14 +78,7 @@
     <material>Gazebo/White</material>
     <turnGravityOff>false</turnGravityOff>
   </gazebo>
-  <joint name="dummy_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0.02"/>
-    <parent link="dummy"/>
-    <child link="base_link"/>
-   </joint>
-  <!-- left_wheel_link -->
-  <link
-    name="left_wheel">
+  <link name="left_wheel">
     <inertial>
       <origin
         xyz="-0.00019487 0 0"
@@ -95,10 +87,10 @@
         value="0.35316" />
       <inertia
         ixx="0.00057446"
-        ixy="-1.0541E-20"
-        ixz="-1.2007E-21"
+        ixy="0"
+        ixz="0"
         iyy="0.00030435"
-        iyz="-1.6186E-20"
+        iyz="0"
         izz="0.00030435" />
     </inertial>
     <visual>
@@ -107,7 +99,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mobile_robot/meshes/wheel.STL" />
+          filename="package://mobile_robot/meshes/left_wheel.STL" />
       </geometry>
       <material
         name="">
@@ -121,15 +113,15 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mobile_robot/meshes/wheel.STL" />
+          filename="package://mobile_robot/meshes/left_wheel.STL" />
       </geometry>
     </collision>
   </link>
   <gazebo reference="left_wheel">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
+    <mu1 value="100.0"/>
+    <mu2 value="100.0"/>
+    <kp value="100000000000.0"/>
+    <kd value="100000000000.0"/>
     <fdir1 value="1 1 0"/>
     <material>Gazebo/DarkGrey</material>
     <turnGravityOff>false</turnGravityOff>
@@ -138,8 +130,8 @@
     name="left_wheel_joint"
     type="continuous">
     <origin
-      xyz="-0.102 0 0.02"
-      rpy="-1.5708 0 3.1416" />
+      xyz="-0.11958 0.00072065 0.029"
+      rpy="-1.5888 0 3.1416" />
     <parent
       link="base_link" />
     <child
@@ -147,346 +139,12 @@
     <axis
       xyz="1 0 0" />
     <limit
-      effort="0.1"
-      velocity="10" />
+      effort="0.5"
+      velocity="5" />
     <dynamics
-      damping="5"
-      friction="0.1" />
+      damping="0.001"
+      friction="0.001" />
   </joint>
-  <!-- right_wheel_link -->
-  <link
-    name="right_wheel">
-    <inertial>
-      <origin
-        xyz="-0.00019487 0 -5.5511E-17"
-        rpy="0 0 0" />
-      <mass
-        value="0.35316" />
-      <inertia
-        ixx="0.00057446"
-        ixy="-1.6127E-20"
-        ixz="4.2409E-21"
-        iyy="0.00030435"
-        iyz="7.4539E-20"
-        izz="0.00030435" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="right_wheel">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 1 0"/>
-    <material>Gazebo/DarkGrey</material>
-    <turnGravityOff>false</turnGravityOff>
-  </gazebo>
-  <joint
-    name="right_wheel_joint"
-    type="continuous">
-    <origin
-      xyz="0.102 0 0.02"
-      rpy="-1.5708 0 3.1416" />
-    <parent
-      link="base_link" />
-    <child
-      link="right_wheel" />
-    <axis
-      xyz="1 0 0" />
-    <limit
-      effort="0.1"
-      velocity="10" />
-    <dynamics
-      damping="0.5"
-      friction="0.1" />
-  </joint>
-  <!-- caster_front -->
-  <link
-    name="caster_front">
-    <inertial>
-      <origin
-        xyz="0.0024842 1.8972E-05 -0.0069742"
-        rpy="0 0 0" />
-      <mass
-        value="0.0086939" />
-      <inertia
-        ixx="6.8617E-07"
-        ixy="-7.4905E-10"
-        ixz="1.1563E-07"
-        iyy="5.8177E-07"
-        iyz="1.5722E-09"
-        izz="6.2943E-07" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/revo_caster.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.69804 0.69804 0.69804 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/revo_caster.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="caster_front">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 1 0"/>
-    <material>Gazebo/White</material>
-    <turnGravityOff>false</turnGravityOff>
-  </gazebo>
-  <joint
-    name="caster_front_joint"
-    type="continuous">
-    <origin
-      xyz="0 0.15 -0.0038"
-      rpy="0 0 -1.584" />
-    <parent
-      link="base_link" />
-    <child
-      link="caster_front" />
-    <axis
-      xyz="0 0 1" />
-    <dynamics
-      damping="0.2"
-      friction="0.1" />
-  </joint>
-  <!-- wheel_front -->
-  <link
-    name="caster_front_wheel">
-    <inertial>
-      <origin
-        xyz="-7.9484E-08 -2.018E-07 5.7893E-08"
-        rpy="0 0 0" />
-      <mass
-        value="0.0039368" />
-      <inertia
-        ixx="1.4244E-07"
-        ixy="7.0479E-12"
-        ixz="1.0503E-11"
-        iyy="1.4236E-07"
-        iyz="1.0861E-11"
-        izz="2.1534E-07" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/caster_wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/caster_wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="caster_front_wheel">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 1 0"/>
-    <material>Gazebo/Black</material>
-    <turnGravityOff>false</turnGravityOff>
-  </gazebo>
-  <joint
-    name="caster_front_wheel_joint"
-    type="continuous">
-    <origin
-      xyz="0.007 0 -0.01652"
-      rpy="1.5708 0 -3.1416" />
-    <parent
-      link="caster_front" />
-    <child
-      link="caster_front_wheel" />
-    <axis
-      xyz="0 0 1" />
-    <dynamics
-      damping="0.2"
-      friction="0.1" />
-  </joint>
-  <!-- caster_back -->
-  <link
-    name="caster_back">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0" />
-      <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/revo_caster.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/revo_caster.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="caster_back">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 1 0"/>
-    <material>Gazebo/White</material>
-    <turnGravityOff>false</turnGravityOff>
-  </gazebo>
-  <joint
-    name="caster_back_joint"
-    type="continuous">
-    <origin
-      xyz="0 -0.15 -0.0038"
-      rpy="0 0 1.5528" />
-    <parent
-      link="base_link" />
-    <child
-      link="caster_back" />
-    <axis
-      xyz="0 0 1" />
-    <dynamics
-      damping="0.2"
-      friction="0.1" />
-  </joint>
-  <!-- wheel_back -->
-  <link
-    name="caster_back_wheel">
-    <inertial>
-      <origin
-        xyz="-7.9885E-08 -2.019E-07 5.7873E-08"
-        rpy="0 0 0" />
-      <mass
-        value="0.0039368" />
-      <inertia
-        ixx="1.4244E-07"
-        ixy="7.0526E-12"
-        ixz="1.0503E-11"
-        iyy="1.4236E-07"
-        iyz="1.0862E-11"
-        izz="2.1534E-07" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/caster_wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_robot/meshes/caster_wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="caster_back_wheel">
-    <mu1 value="10.0"/>
-    <mu2 value="10.0"/>
-    <kp value="100.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 1 0"/>
-    <material>Gazebo/Black</material>
-    <turnGravityOff>false</turnGravityOff>
-  </gazebo>
-  <joint
-    name="caster_back_wheel_joint"
-    type="continuous">
-    <origin
-      xyz="0.007 0 -0.01652"
-      rpy="1.5708 0 3.1416" />
-    <parent
-      link="caster_back" />
-    <child
-      link="caster_back_wheel" />
-    <axis
-      xyz="0 0 1" />
-    <dynamics
-      damping="0.2"
-      friction="0.1" />
-  </joint>
-  <!-- actuators -->
   <transmission name="tran_left_wheel">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_wheel_joint">
@@ -497,7 +155,73 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-
+  <link name="right_wheel">
+    <inertial>
+      <origin
+        xyz="-0.00019487 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.35316" />
+      <inertia
+        ixx="0.00057446"
+        ixy="0"
+        ixz="0"
+        iyy="0.00030435"
+        iyz="0"
+        izz="0.00030435" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_robot/meshes/right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_robot/meshes/right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="right_wheel">
+    <mu1 value="100.0"/>
+    <mu2 value="100.0"/>
+    <kp value="100000000000.0"/>
+    <kd value="100000000000.0"/>
+    <fdir1 value="1 1 0"/>
+    <material>Gazebo/DarkGrey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.11958 0.00072065 0.029"
+      rpy="-1.5888 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      effort="0.5"
+      velocity="5" />
+    <dynamics
+      damping="0.001"
+      friction="0.001" />
+  </joint>
   <transmission name="tran_right_wheel">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="right_wheel_joint">

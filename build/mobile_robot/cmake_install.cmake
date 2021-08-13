@@ -52,19 +52,3 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_robot" TYPE FILE FILES "/home/hoangdung/ROS_project/mobile_robot_ws/src/mobile_robot/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_robot/config" TYPE DIRECTORY FILES "/home/hoangdung/ROS_project/mobile_robot_ws/src/mobile_robot/config/")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_robot/launch" TYPE DIRECTORY FILES "/home/hoangdung/ROS_project/mobile_robot_ws/src/mobile_robot/launch/")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_robot/meshes" TYPE DIRECTORY FILES "/home/hoangdung/ROS_project/mobile_robot_ws/src/mobile_robot/meshes/")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mobile_robot/urdf" TYPE DIRECTORY FILES "/home/hoangdung/ROS_project/mobile_robot_ws/src/mobile_robot/urdf/")
-endif()
-

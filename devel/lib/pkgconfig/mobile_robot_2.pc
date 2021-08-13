@@ -1,0 +1,8 @@
+prefix=/home/hoangdung/ROS_project/mobile_robot_ws/devel
+
+Name: mobile_robot_2
+Description: Description of mobile_robot_2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

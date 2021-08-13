@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "mobile_robot"
 PROJECT_SPACE_DIR = "/home/hoangdung/ROS_project/mobile_robot_ws/devel"
-PROJECT_VERSION = "1.0.0"
+PROJECT_VERSION = "0.0.0"

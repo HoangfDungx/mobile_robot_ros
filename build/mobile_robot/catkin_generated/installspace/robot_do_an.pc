@@ -1,0 +1,8 @@
+prefix=/home/hoangdung/ROS_project/mobile_robot_ws/install
+
+Name: robot_do_an
+Description: Description of robot_do_an
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: message_runtime

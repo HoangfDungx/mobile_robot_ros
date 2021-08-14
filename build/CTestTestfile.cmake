@@ -5,5 +5,6 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("navigation_pkg")
 subdirs("mobile_robot_controller")
 subdirs("mobile_robot")

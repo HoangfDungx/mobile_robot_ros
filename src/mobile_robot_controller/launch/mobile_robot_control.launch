@@ -5,8 +5,8 @@
     output="screen" ns="/mobile_robot" args="left_wheel_controller right_wheel_controller joint_state_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
     respawn="false" output="screen">
     <remap from="/joint_states" to="/mobile_robot/joint_states" />
-  </node>
+  </node> -->
 </launch>

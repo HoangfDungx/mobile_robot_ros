@@ -1,0 +1,22 @@
+<launch>
+  <arg name="model" />
+  <arg name="scan_topic"  default="/mybot/laser/scan" />
+  <arg name="base_frame"  default="base_link"/>
+  <arg name="odom_frame"  default="base_footprint"/>
+  <!-- <param
+    name="robot_description"
+    textfile="$(find mobile_robot)/urdf/mobile_robot.urdf" /> -->
+  <node
+    name="joint_state_publisher"
+    pkg="joint_state_publisher"
+    type="joint_state_publisher" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find mobile_robot)/rviz/rviz.rviz" />
+</launch>

@@ -27,4 +27,15 @@
     pkg="rostopic"
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
+  
+  <include file="$(find mobile_robot)/launch/rviz.launch" />
+  <include file="$(find mobile_robot_controller)/launch/mobile_robot_control.launch" />
+
+  <node 
+    name="keyboard_control"
+    pkg="mobile_robot_controller"
+    type="keyboard_control.py"
+    output="screen"
+  />
+
 </launch>

@@ -30,7 +30,8 @@
   
   <include file="$(find mobile_robot)/launch/rviz.launch" />
   <include file="$(find mobile_robot_controller)/launch/mobile_robot_control.launch" />
-  <include file="$(find navigation_pkg)/launch/slam_gmapping.launch"/>
+  <!-- Uncomment the line below to buliding the map -->
+  <!-- <include file="$(find navigation_pkg)/launch/slam_gmapping.launch"/> --> 
   <include file="$(find navigation_pkg)/launch/amcl.launch"/>
   <!-- <node 
     name="keyboard_control"

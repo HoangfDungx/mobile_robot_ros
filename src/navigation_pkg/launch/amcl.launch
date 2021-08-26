@@ -33,6 +33,6 @@
 -->
   </include>
 
-  <!-- <include file="$(find navigation_pkg)/launch/includes/move_base.launch.xml"/> -->
+  <include file="$(find navigation_pkg)/launch/includes/move_base.launch"/>
 
 </launch>
